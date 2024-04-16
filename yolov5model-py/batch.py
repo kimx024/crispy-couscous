@@ -22,10 +22,10 @@ model.multi_label = False # NMS multiple labels per box.
 model.max_det = 1000 # maximum number of detections per image
 
 # directory containing multiple images
-input_dir = "C:\Users\fifag\Documents\kim-fifa\crispy-couscous\yolov5model-py\part0"
+input_dir = "C:\\Users\\fifag\\Documents\\kim-fifa\\crispy-couscous\\yolov5model-py\\part0"
 
 # directory to save results
-output_dir = "C:\Users\fifag\Documents\kim-fifa\crispy-couscous\yolov5model-py\part0.frames"
+output_dir = "C:\\Users\\fifag\\Documents\\kim-fifa\\crispy-couscous\\yolov5model-py\\part0.frames"
 os.makedirs(output_dir, exist_ok=True) # create output directory if it doesn't exist
 
 # introduce counter
