@@ -2,8 +2,8 @@
 
 ## Supported Versions
 
-Use this section to tell people about which versions of your project are
-currently being supported with security updates.
+Which versions of the project are currently being supported with security updates.
+Also stable and working
 
 | Version | Supported          |
 | ------- | ------------------ |
