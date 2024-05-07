@@ -1,0 +1,8 @@
+# Crispy-Couscous for the win
+- Cross-functioning python scripts to process images with Yolov5m model
+
+Inside this folder
+- dataset: contains the current datasets used for model training.
+- z'attempts-archives: They are separated in trials, starting at 0. These files are there for traceability and justification of the process and are no longer used
+- model: contains the yolov5m model and the best.pt (weights) after training. **Use this one for further training and fine-tuning, not the one created in the .venv**
+- files: contains new datafiles to be looped into frames for annotation.
