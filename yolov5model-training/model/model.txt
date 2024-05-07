@@ -1,0 +1,2 @@
+The yolov5m model is chosen to be a most optimal candidate.
+As the real-time prediction would be in C++, this is a good substitute to correctly mark the areas.
