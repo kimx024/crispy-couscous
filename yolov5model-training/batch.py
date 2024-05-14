@@ -2,8 +2,13 @@ import os
 import yolov5
 from PIL import Image
 
-# load model
-model = yolov5.load('keremberke/yolov5s-football')
+# Load the pretrained model with the custom weights (best.pt)
+model_path = ('/Users/kim.lichtenberg/Desktop/kim-fifa/crispy-couscous/.venv/lib/python3.10/site-packages/yolov5'
+              '/models/yolov5m.yaml')
+weights_path = '/yolov5model-training/best.pt'
+
+model = yolov5.load(weights_path)  # loading the custom weights
+print("Model loaded successfully")
 
 # set model parameters
 model.conf = 0.70 # NMS threshold. Sets the model's confidence threshold for non-maximum suppression (NMS)
