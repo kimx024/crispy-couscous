@@ -4,9 +4,13 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 
+
 class SoccerPenaltyEnv(gym.Env):
     def __init__(self):
         super(SoccerPenaltyEnv, self).__init__()
+        self.player = np.where(self.player == [600, 100])
+        self.goalkeeper_position = np.where(self.goalkeeper == [600, 1100])
+        self.ball = [600, 100]
         self.action_space = spaces.Discrete(1000 * 1000)
         self.observation_space = spaces.Box(low=np.array([0, 0]), high=np.array([1200, 1200]), dtype=np.int32)
         self.figure, self.ax = plt.subplots()
