@@ -1,6 +1,7 @@
 import cv2
 import numpy as np
 import os
+import torch
 
 # Define the reference coordinates of the goal corners
 ref_pts = np.array([
@@ -26,48 +27,45 @@ def apply_homography(H, points):
     return transformed_points[0]
 
 
-def detect_goal_yolo(frame, net, output_layers, classes):
-    height, width, channels = frame.shape
-    blob = cv2.dnn.blobFromImage(frame, 0.00392, (416, 416), (0, 0, 0), True, crop=False)
-    net.setInput(blob)
-    outs = net.forward(output_layers)
+def detect_goal_yolov5(frame, model):
+    results = model(frame)
+    detections = results.xyxy[0]  # Get the first (and only) batch
 
-    class_ids = []
-    confidences = []
-    boxes = []
+    # Initialize dictionary to hold section coordinates
+    goal_sections = {
+        "goal-top-left": None,
+        "goal-middle-down": None,
+        "goal-top-right": None,
+        "goal-bottom-left": None,
+        "goal-middle-up": None,
+        "goal-bottom-right": None
+    }
 
-    for out in outs:
-        for detection in out:
-            scores = detection[5:]
-            class_id = np.argmax(scores)
-            confidence = scores[class_id]
-            if confidence > 0.5 and classes[class_id] == "goal":  # Replace "goal" with your actual class label
-                center_x = int(detection[0] * width)
-                center_y = int(detection[1] * height)
-                w = int(detection[2] * width)
-                h = int(detection[3] * height)
+    # Extract detected goal sections
+    for *box, conf, cls in detections:
+        if conf > 0.3:
+            class_name = model.names[int(cls)]
+            if class_name in goal_sections:
+                x1, y1, x2, y2 = int(box[0]), int(box[1]), int(box[2]), int(box[3])
+                goal_sections[class_name] = (x1, y1, x2, y2)
 
-                x = int(center_x - w / 2)
-                y = int(center_y - h / 2)
+    # Check if all sections are detected
+    if None in goal_sections.values():
+        return None  # Return None if any section is missing
 
-                boxes.append([x, y, w, h])
-                confidences.append(float(confidence))
-                class_ids.append(class_id)
+    # Combine the sections to form the goal coordinates
+    goal_points = [
+        (goal_sections["goal-top-left"][0], goal_sections["goal-top-left"][1]),  # Top-left
+        (goal_sections["goal-top-right"][2], goal_sections["goal-top-right"][1]),  # Top-right
+        (goal_sections["goal-bottom-right"][2], goal_sections["goal-bottom-right"][3]),  # Bottom-right
+        (goal_sections["goal-bottom-left"][0], goal_sections["goal-bottom-left"][3])  # Bottom-left
+    ]
 
-    indexes = cv2.dnn.NMSBoxes(boxes, confidences, 0.5, 0.4)
-
-    goal_points = []
-    for i in range(len(boxes)):
-        if i in indexes:
-            x, y, w, h = boxes[i]
-            # Top-left, Top-right, Bottom-right, Bottom-left
-            goal_points = [(x, y), (x + w, y), (x + w, y + h), (x, y + h)]
-            break
-
+    print(goal_points)
     return goal_points
 
 
-def process_frames(folder_path, net, output_layers, classes):
+def process_frames(folder_path, model):
     # Get a list of all image files in the folder
     image_files = [f for f in os.listdir(folder_path) if f.endswith(('png', 'jpg', 'jpeg'))]
     image_files.sort()  # Sort files if necessary
@@ -79,10 +77,12 @@ def process_frames(folder_path, net, output_layers, classes):
         if frame is None:
             continue
 
-        # Detect goal in the current frame using YOLO
-        goal_points = detect_goal_yolo(frame, net, output_layers, classes)
+        # Detect goal in the current frame using YOLOv5
+        goal_points = detect_goal_yolov5(frame, model)
+        print(goal_points)
 
         if goal_points and len(goal_points) == 4:
+            print("I'm here")
             # Compute the homography matrix for the current frame
             H = compute_homography(goal_points)
 
@@ -91,9 +91,9 @@ def process_frames(folder_path, net, output_layers, classes):
 
             # Draw the detected goal and transformed points on the frame
             for pt in goal_points:
-                cv2.circle(frame, tuple(pt), 5, (0, 255, 0), -1)
+                cv2.circle(frame, (int(pt[0]), int(pt[1])), 5, (0, 255, 0), -1)
             for pt in mapped_points:
-                cv2.circle(frame, tuple(pt), 5, (255, 0, 0), -1)
+                cv2.circle(frame, (int(pt[0]), int(pt[1])), 5, (255, 0, 0), -1)
 
             # Display the homography matrix (optional)
             print(f"Frame: {image_file}")
@@ -110,15 +110,15 @@ def process_frames(folder_path, net, output_layers, classes):
     cv2.destroyAllWindows()
 
 
-# Load YOLO model
-net = cv2.dnn.readNet("yolov3.weights", "yolov3.cfg")
-layer_names = net.getLayerNames()
-output_layers = [layer_names[i[0] - 1] for i in net.getUnconnectedOutLayers()]
+# Load YOLOv5 model locally
+model_path = '/Users/kim.lichtenberg/Desktop/kim-fifa/crispy-couscous/.venv/lib/python3.10/site-packages/yolov5'  # Replace with the actual path to your local YOLOv5 repository
+weights_path = '/Users/kim.lichtenberg/Desktop/kim-fifa/crispy-couscous/yolov5model-training/model/best.pt'
+model = torch.hub.load(model_path, 'custom', path=weights_path, source='local', force_reload=True)
 
-# Load class labels
-with open("coco.names", "r") as f:
-    classes = [line.strip() for line in f.readlines()]
+# Load YOLOv5 model
+# model = torch.hub.load('/Users/kim.lichtenberg/Desktop/kim-fifa/crispy-couscous/yolov5model-training/model/yolov5m.yaml', 'custom', path='/Users/kim.lichtenberg/Desktop/kim-fifa/crispy-couscous/yolov5model-training/model/best.pt', force_reload=True)
 
 # Example usage with a folder path
-folder_path = 'path/to/your/frames_folder'
-process_frames(folder_path, net, output_layers, classes)
+folder_path = '/Users/kim.lichtenberg/Desktop/kim-fifa/crispy-couscous/yolov5model-training/dataset/test/images'
+process_frames(folder_path, model)
+print("Done")

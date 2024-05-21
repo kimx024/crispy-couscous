@@ -35,7 +35,7 @@ def detect_goal(frame):
         [100, 100],  # Top-left corner
         [500, 100],  # Top-right corner
         [500, 300],  # Bottom-right corner
-        [100, 300]  # Bottom-left corner
+        [100, 200]  # Bottom-left corner
     ]
     return detected_points
 
@@ -56,17 +56,19 @@ def process_frames(folder_path):
         goal_points = detect_goal(frame)
 
         if len(goal_points) == 4:
+            print(f'Goal points type is {type(goal_points)}')
             # Compute the homography matrix for the current frame
             H = compute_homography(goal_points)
 
             # Optionally, apply the homography to verify
             mapped_points = apply_homography(H, goal_points)
+            print(f'Mapped points type is {type(mapped_points)}')
 
             # Draw the detected goal and transformed points on the frame
             for pt in goal_points:
-                cv2.circle(frame, tuple(pt), 5, (0, 255, 0), -1)
+                cv2.circle(frame, (int(pt[0]), int(pt[1])), 5, (0, 255, 0), -1)
             for pt in mapped_points:
-                cv2.circle(frame, tuple(pt), 5, (255, 0, 0), -1)
+                cv2.circle(frame, (int(pt[0]), int(pt[1])), 5, (255, 0, 0), -1)
 
             # Display the homography matrix (optional)
             print(f"Frame: {image_file}")
@@ -84,5 +86,5 @@ def process_frames(folder_path):
 
 
 # Example usage with a folder path
-folder_path = 'path/to/your/frames_folder'
+folder_path = '/Users/kim.lichtenberg/Desktop/kim-fifa/crispy-couscous/yolov5model-training/dataset/test/images'
 process_frames(folder_path)
