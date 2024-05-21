@@ -3,8 +3,9 @@ import numpy as np
 import os
 import torch
 
+
 # Define the reference coordinates of the goal corners
-ref_pts = np.array([
+reference_points = np.array([
     [0, 0],
     [1, 0],
     [1, 1],
@@ -17,8 +18,8 @@ def compute_homography(image_points):
     img_pts = np.array(image_points, dtype="float32")
 
     # Compute the homography matrix
-    H, status = cv2.findHomography(img_pts, ref_pts)
-    return H
+    homography_matrix, status = cv2.findHomography(img_pts, reference_points)
+    return homography_matrix
 
 
 def apply_homography(H, points):
@@ -27,7 +28,7 @@ def apply_homography(H, points):
     return transformed_points[0]
 
 
-def detect_goal_yolov5(frame, model):
+def detect_goal_with_yolo(frame, model):
     results = model(frame)
     detections = results.xyxy[0]  # Get the first (and only) batch
 
@@ -78,16 +79,16 @@ def process_frames(folder_path, model):
             continue
 
         # Detect goal in the current frame using YOLOv5
-        goal_points = detect_goal_yolov5(frame, model)
+        goal_points = detect_goal_with_yolo(frame, model)
         print(goal_points)
 
         if goal_points and len(goal_points) == 4:
             print("I'm here")
             # Compute the homography matrix for the current frame
-            H = compute_homography(goal_points)
+            homography_matrix = compute_homography(goal_points)
 
             # Optionally, apply the homography to verify
-            mapped_points = apply_homography(H, goal_points)
+            mapped_points = apply_homography(homography_matrix, goal_points)
 
             # Draw the detected goal and transformed points on the frame
             for pt in goal_points:
@@ -97,7 +98,7 @@ def process_frames(folder_path, model):
 
             # Display the homography matrix (optional)
             print(f"Frame: {image_file}")
-            print("Homography Matrix:\n", H)
+            print("Homography Matrix:\n", homography_matrix)
 
         # Display the processed frame
         cv2.imshow('Frame', frame)
@@ -111,14 +112,11 @@ def process_frames(folder_path, model):
 
 
 # Load YOLOv5 model locally
-model_path = '/Users/kim.lichtenberg/Desktop/kim-fifa/crispy-couscous/.venv/lib/python3.10/site-packages/yolov5'  # Replace with the actual path to your local YOLOv5 repository
+model_path = '/Users/kim.lichtenberg/Desktop/kim-fifa/crispy-couscous/.venv/lib/python3.10/site-packages/yolov5'
 weights_path = '/Users/kim.lichtenberg/Desktop/kim-fifa/crispy-couscous/yolov5model-training/model/best.pt'
-model = torch.hub.load(model_path, 'custom', path=weights_path, source='local', force_reload=True)
-
-# Load YOLOv5 model
-# model = torch.hub.load('/Users/kim.lichtenberg/Desktop/kim-fifa/crispy-couscous/yolov5model-training/model/yolov5m.yaml', 'custom', path='/Users/kim.lichtenberg/Desktop/kim-fifa/crispy-couscous/yolov5model-training/model/best.pt', force_reload=True)
+yolo_model = torch.hub.load(model_path, 'custom', path=weights_path, source='local', force_reload=True)
 
 # Example usage with a folder path
-folder_path = '/Users/kim.lichtenberg/Desktop/kim-fifa/crispy-couscous/yolov5model-training/dataset/test/images'
-process_frames(folder_path, model)
+frames = '/Users/kim.lichtenberg/Desktop/kim-fifa/crispy-couscous/yolov5model-training/dataset/test/images'
+process_frames(frames, yolo_model)
 print("Done")
