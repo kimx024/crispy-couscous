@@ -43,11 +43,29 @@ def detect_goal_with_yolo(frame, model):
 
     # Extract detected goal sections
     for *box, conf, cls in detections:
-        if conf > 0.8:
+        if conf > 0.3:
             class_name = model.names[int(cls)]
             if class_name in goal_sections:
                 x1, y1, x2, y2 = int(box[0]), int(box[1]), int(box[2]), int(box[3])
                 goal_sections[class_name] = (x1, y1, x2, y2)
+
+    missing_sections = [key for key, value in goal_sections.items() if value is None]
+
+    if missing_sections:
+        print(f"Missing sections: {missing_sections}")
+        # Implement simple fallback logic
+        if "goal-top-left" in missing_sections and goal_sections["goal-bottom-left"]:
+            goal_sections["goal-top-left"] = (
+            goal_sections["goal-bottom-left"][0], goal_sections["goal-bottom-left"][1] - 50)
+        if "goal-top-right" in missing_sections and goal_sections["goal-bottom-right"]:
+            goal_sections["goal-top-right"] = (
+            goal_sections["goal-bottom-right"][0], goal_sections["goal-bottom-right"][1] - 50)
+        if "goal-bottom-left" in missing_sections and goal_sections["goal-top-left"]:
+            goal_sections["goal-bottom-left"] = (
+            goal_sections["goal-top-left"][0], goal_sections["goal-top-left"][1] + 50)
+        if "goal-bottom-right" in missing_sections and goal_sections["goal-top-right"]:
+            goal_sections["goal-bottom-right"] = (
+            goal_sections["goal-top-right"][0], goal_sections["goal-top-right"][1] + 50)
 
     # Check if all sections are detected
     if None in goal_sections.values():
@@ -61,8 +79,19 @@ def detect_goal_with_yolo(frame, model):
         (goal_sections["goal-bottom-left"][0], goal_sections["goal-bottom-left"][3])  # Bottom-left
     ]
 
-    print(goal_points)
     return goal_points
+
+    if missing_sections:
+        print(f"Missing sections: {missing_sections}")
+        # Implement simple fallback logic
+        if "goal-top-left" in missing_sections and goal_sections["goal-bottom-left"]:
+            goal_sections["goal-top-left"] = (goal_sections["goal-bottom-left"][0], goal_sections["goal-bottom-left"][1] - 50)
+        if "goal-top-right" in missing_sections and goal_sections["goal-bottom-right"]:
+            goal_sections["goal-top-right"] = (goal_sections["goal-bottom-right"][0], goal_sections["goal-bottom-right"][1] - 50)
+        if "goal-bottom-left" in missing_sections and goal_sections["goal-top-left"]:
+            goal_sections["goal-bottom-left"] = (goal_sections["goal-top-left"][0], goal_sections["goal-top-left"][1] + 50)
+        if "goal-bottom-right" in missing_sections and goal_sections["goal-top-right"]:
+            goal_sections["goal-bottom-right"] = (goal_sections["goal-top-right"][0], goal_sections["goal-top-right"][1] + 50)
 
 
 def process_frames(folder_path, model):
@@ -79,10 +108,8 @@ def process_frames(folder_path, model):
 
         # Detect goal in the current frame using YOLOv5
         goal_points = detect_goal_with_yolo(frame, model)
-        print(goal_points)
 
         if goal_points and len(goal_points) == 4:
-            print("I'm here")
             # Compute the homography matrix for the current frame
             homography_matrix = compute_homography(goal_points)
 
@@ -110,12 +137,13 @@ def process_frames(folder_path, model):
     cv2.destroyAllWindows()
 
 
-# Load YOLOv5 model locally
-model_path = '/Users/kim.lichtenberg/Desktop/kim-fifa/crispy-couscous/.venv/lib/python3.10/site-packages/yolov5'
-weights_path = '/Users/kim.lichtenberg/Desktop/kim-fifa/crispy-couscous/yolov5model-training/model/best.pt'
-yolo_model = torch.hub.load(model_path, 'custom', path=weights_path, source='local', force_reload=True)
+if __name__ == '__main__':
+    # Load YOLOv5 model locally
+    model_path = '/Users/kim.lichtenberg/Desktop/kim-fifa/crispy-couscous/.venv/lib/python3.10/site-packages/yolov5'
+    weights_path = '/Users/kim.lichtenberg/Desktop/kim-fifa/crispy-couscous/yolov5model-training/model/best.pt'
+    yolo_model = torch.hub.load(model_path, 'custom', path=weights_path, source='local', force_reload=True)
 
-# Example usage with a folder path
-frames = '/Users/kim.lichtenberg/Desktop/kim-fifa/crispy-couscous/yolov5model-training/dataset/test/images'
-process_frames(frames, yolo_model)
-print("Done")
+    # Example usage with a folder path
+    frames = '/Users/kim.lichtenberg/Desktop/kim-fifa/crispy-couscous/yolov5model-training/dataset/train/images'
+    process_frames(frames, yolo_model)
+    print("Done")

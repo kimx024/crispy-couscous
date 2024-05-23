@@ -3,13 +3,9 @@ import numpy as np
 import os
 import torch
 
+
 # Define the reference coordinates of the goal corners
-reference_points = np.array([
-    [0, 0],
-    [1, 0],
-    [1, 1],
-    [0, 1]
-], dtype="float32")
+reference_points = np.array([[0, 0], [0, 1], [1, 0], [1, 1]], dtype="float32")
 
 
 def compute_homography(image_points):
@@ -43,7 +39,7 @@ def detect_goal_with_yolo(frame, model):
 
     # Extract detected goal sections
     for *box, conf, cls in detections:
-        if conf > 0.8:
+        if conf > 0.3:
             class_name = model.names[int(cls)]
             if class_name in goal_sections:
                 x1, y1, x2, y2 = int(box[0]), int(box[1]), int(box[2]), int(box[3])
@@ -55,10 +51,11 @@ def detect_goal_with_yolo(frame, model):
 
     # Combine the sections to form the goal coordinates
     goal_points = [
-        (goal_sections["goal-top-left"][0], goal_sections["goal-top-left"][1]),  # Top-left
-        (goal_sections["goal-top-right"][2], goal_sections["goal-top-right"][1]),  # Top-right
-        (goal_sections["goal-bottom-right"][2], goal_sections["goal-bottom-right"][3]),  # Bottom-right
-        (goal_sections["goal-bottom-left"][0], goal_sections["goal-bottom-left"][3])  # Bottom-left
+        (goal_sections["goal-top-left"][0], goal_sections["goal-top-left"][1]),
+        (goal_sections["goal-top-left"][2], goal_sections["goal-top-left"][3]),
+        (goal_sections["goal-top-right"][2], goal_sections["goal-top-right"][1]),
+        (goal_sections["goal-bottom-right"][2], goal_sections["goal-bottom-right"][3]),
+        (goal_sections["goal-bottom-left"][0], goal_sections["goal-bottom-left"][3])
     ]
 
     print(goal_points)
@@ -81,7 +78,7 @@ def process_frames(folder_path, model):
         goal_points = detect_goal_with_yolo(frame, model)
         print(goal_points)
 
-        if goal_points and len(goal_points) == 4:
+        if goal_points and len(goal_points) == 5:
             print("I'm here")
             # Compute the homography matrix for the current frame
             homography_matrix = compute_homography(goal_points)
