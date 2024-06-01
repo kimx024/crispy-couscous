@@ -4,15 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="762c8a54-7a5a-4b4c-8f8e-3e1aa361ad96" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/kim-fifa.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/kim-fifa.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/homography-mapping/ugh1.py" beforeDir="false" afterPath="$PROJECT_DIR$/homography-mapping/ugh1-DNE.py" afterDir="false" />
+    <list default="true" id="762c8a54-7a5a-4b4c-8f8e-3e1aa361ad96" name="Changes" comment="homographic mapping">
+      <change afterPath="$PROJECT_DIR$/qodana.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gym-environment/2D-environment-logging.py" beforeDir="false" afterPath="$PROJECT_DIR$/gym-environment/2D-environment-logging.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gym-environment/2D-environment.py" beforeDir="false" afterPath="$PROJECT_DIR$/gym-environment/2D-environment.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gym-environment/lunarlander.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/homography-mapping/file0.py" beforeDir="false" afterPath="$PROJECT_DIR$/homography-mapping/file0.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/homography-mapping/mutliple.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/homography-mapping/ugh0.py" beforeDir="false" afterPath="$PROJECT_DIR$/homography-mapping/ugh0.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/homography-mapping/ugh1-DNE.py" beforeDir="false" afterPath="$PROJECT_DIR$/homography-mapping/ugh1-DNE.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/homography-mapping/ugh2.py" beforeDir="false" afterPath="$PROJECT_DIR$/homography-mapping/ugh2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/homography-mapping/withYolo.py" beforeDir="false" afterPath="$PROJECT_DIR$/homography-mapping/withYolo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/homography-mapping/withYolo1.py" beforeDir="false" afterPath="$PROJECT_DIR$/homography-mapping/withYolo1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/homography-mapping/witihYolo2.py" beforeDir="false" afterPath="$PROJECT_DIR$/homography-mapping/witihYolo2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yolov5model-training/batch.py" beforeDir="false" afterPath="$PROJECT_DIR$/yolov5model-training/batch.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yolov5model-training/fine-tuning.ipynb" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/yolov5model-training/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/yolov5model-training/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yolov5model-training/model-dataset/data.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/yolov5model-training/model-dataset/data.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yolov5model-training/simplified.py" beforeDir="false" afterPath="$PROJECT_DIR$/yolov5model-training/simplified.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,6 +50,10 @@
     &quot;accountId&quot;: &quot;bad25b57-c1da-445c-8e02-fc2d2b525f05&quot;
   }
 }</component>
+  <component name="ProblemsViewState">
+    <option name="proportion" value="0.7879636" />
+    <option name="selectedTabId" value="QODANA_PROBLEMS_VIEW_TAB" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 0
@@ -53,6 +66,8 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Python.batch.executor": "Run",
+    "Python.cartwheel.executor": "Run",
+    "Python.lunarlander.executor": "Run",
     "Python.main.executor": "Run",
     "Python.ugh1-DNE.executor": "Run",
     "Python.ugh1.executor": "Run",
@@ -68,7 +83,13 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="Python.ugh1-DNE">
+  <component name="QodanaReportsService">
+    <option name="descriptions">
+      <ReportDescription localRun="true" path="/private/var/folders/jc/84vn2js17ns0gh2v23_2sckw0000gp/T/qodana_output/qodana.sarif.json" reportGuid="c1dcd8a1-7d1d-4a51-a437-fd6f3f690a11" reportId="crispy-couscous/qodana/2024-06-02" />
+      <ReportDescription localRun="true" path="/private/var/folders/jc/84vn2js17ns0gh2v23_2sckw0000gp/T/qodana_output1/qodana.sarif.json" reportGuid="51893659-1c64-44bc-8010-2f6a52b4a5ba" reportId="crispy-couscous/qodana/2024-06-02" />
+    </option>
+  </component>
+  <component name="RunManager" selected="Python.cartwheel">
     <configuration name="batch" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="kim-fifa" />
       <option name="ENV_FILES" value="" />
@@ -84,6 +105,52 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/yolov5model-training/batch.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="cartwheel" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="kim-fifa" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/gym-environment" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/gym-environment/cartwheel.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="lunarlander" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="kim-fifa" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/gym-environment" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/gym-environment/lunarlander.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -138,35 +205,13 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="ugh2" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="kim-fifa" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/homography-mapping" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/homography-mapping/ugh2.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.cartwheel" />
+        <item itemvalue="Python.lunarlander" />
         <item itemvalue="Python.ugh1-DNE" />
         <item itemvalue="Python.batch" />
         <item itemvalue="Python.main" />
-        <item itemvalue="Python.ugh2" />
       </list>
     </recent_temporary>
   </component>
@@ -187,17 +232,32 @@
       <option name="presentableId" value="Default" />
       <updated>1717250174084</updated>
       <workItem from="1717250175798" duration="487000" />
-      <workItem from="1717250721071" duration="5937000" />
+      <workItem from="1717250721071" duration="8201000" />
     </task>
+    <task id="LOCAL-00001" summary="homographic mapping">
+      <option name="closed" value="true" />
+      <created>1717274266133</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1717274266133</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="homographic mapping" />
+    <option name="LAST_COMMIT_MESSAGE" value="homographic mapping" />
+  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/crispy_couscous$ugh1.coverage" NAME="ugh1-DNE Coverage Results" MODIFIED="1717274147690" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/homography-mapping" />
     <SUITE FILE_PATH="coverage/crispy_couscous$batch.coverage" NAME="batch Coverage Results" MODIFIED="1717256006367" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/yolov5model-training" />
     <SUITE FILE_PATH="coverage/crispy_couscous$main.coverage" NAME="main Coverage Results" MODIFIED="1717255607405" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/yolov5model-training" />
+    <SUITE FILE_PATH="coverage/crispy_couscous$lunarlander.coverage" NAME="lunarlander Coverage Results" MODIFIED="1717282483442" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/gym-environment" />
     <SUITE FILE_PATH="coverage/crispy_couscous$ugh2.coverage" NAME="ugh2 Coverage Results" MODIFIED="1717254430555" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/homography-mapping" />
+    <SUITE FILE_PATH="coverage/crispy_couscous$cartwheel.coverage" NAME="cartwheel Coverage Results" MODIFIED="1717283664825" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/gym-environment" />
   </component>
 </project>

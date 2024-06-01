@@ -43,6 +43,7 @@ def get_label_information(information_list):
 
 
 def establish_goal(information_list, model):
+    non_counter = 0
     goal_points = []
     goal_sections = {
         "goal-top-left": None,
@@ -85,6 +86,7 @@ def establish_goal(information_list, model):
 
             # print(f"In frame {index + 1} the corners of the goal are: {goal_points}")
         else:
+            non_counter += 1
             # print(f"In frame {index + 1}, not all goal sections were detected.")
             continue
     return goal_points
@@ -97,7 +99,8 @@ def determine_homography_goal(goal_points, ref_points) -> np.ndarray:
     calculated in the establish_goal function. The second is an array of the new or destined image.
 
     When projection = 1 it means that the application is valid and the points are successfully used.
-    :param goal_points:
+    :param goal_points: the corners of the goal
+    :param ref_points: the corners of the array
     :return: homography_goal_coordinates: np.ndarray of shape (3, 2)
     """
     goal_coordinates = np.array(goal_points, dtype="float32")

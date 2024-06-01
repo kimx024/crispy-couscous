@@ -21,9 +21,9 @@ def compute_homography(image_points):
     return homography_matrix
 
 
-def apply_homography(H, points):
+def apply_homography(h, points):
     # Transform the points using the homography matrix
-    transformed_points = cv2.perspectiveTransform(np.array([points], dtype="float32"), H)
+    transformed_points = cv2.perspectiveTransform(np.array([points], dtype="float32"), h)
     return transformed_points[0]
 
 
@@ -34,6 +34,7 @@ def yolo_to_bbox(image_shape, yolo_annotation):
     x1, y1 = int(x_center - w / 2), int(y_center - h / 2)
     x2, y2 = int(x_center + w / 2), int(y_center + h / 2)
     return int(cls), x1, y1, x2, y2
+
 
 def detect_goal_with_yolo(frame, annotations):
     height, width = frame.shape[:2]
@@ -68,6 +69,7 @@ def detect_goal_with_yolo(frame, annotations):
         (goal_sections["goal-bottom-left"][0], goal_sections["goal-bottom-left"][3])  # Bottom-left
     ]
     return goal_points
+
 
 def process_frames(folder_path, annotations_path):
     # Get a list of all image files in the folder
@@ -119,8 +121,9 @@ def process_frames(folder_path, annotations_path):
     # Close all OpenCV windows
     cv2.destroyAllWindows()
 
+
 # Example usage with a folder path
 frames_path = '/Users/kim.lichtenberg/Desktop/kim-fifa/crispy-couscous/yolov5model-training/dataset/test/images'
-annotations_path = '/Users/kim.lichtenberg/Desktop/kim-fifa/crispy-couscous/yolov5model-training/dataset/test/labels'
-process_frames(frames_path, annotations_path)
+labels_path = '/Users/kim.lichtenberg/Desktop/kim-fifa/crispy-couscous/yolov5model-training/dataset/test/labels'
+process_frames(frames_path, labels_path)
 print("Done")

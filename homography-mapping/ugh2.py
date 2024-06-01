@@ -10,8 +10,10 @@
 #
 #
 # def read_folder(image_directory, label_directory):
-#     image_files = [os.path.join(image_directory, f) for f in os.listdir(image_directory) if f.endswith(('png', 'jpg', 'jpeg'))]
-#     label_files = [os.path.join(label_directory, os.path.splitext(f)[0] + '.txt') for f in os.listdir(image_directory) if f.endswith(('png', 'jpg', 'jpeg'))]
+#     image_files = [os.path.join(image_directory, f)
+#     for f in os.listdir(image_directory) if f.endswith(('png', 'jpg', 'jpeg'))]
+#     label_files = [os.path.join(label_directory, os.path.splitext(f)[0] + '.txt')
+#     for f in os.listdir(image_directory) if f.endswith(('png', 'jpg', 'jpeg'))]
 #     image_files.sort()
 #     label_files.sort()
 #     counter = len(image_files)  # Update counter to reflect the number of files

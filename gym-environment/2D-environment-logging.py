@@ -1,9 +1,11 @@
+""""
 import gym
 import logging
 from gym import spaces
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
+
 
 class SoccerPenaltyEnv(gym.Env):
     def __init__(self):
@@ -25,7 +27,7 @@ class SoccerPenaltyEnv(gym.Env):
         y_goal = 1100  # y position at goal line
         section = np.random.choice(['Top-left', 'Top-right', 'Middle-up', 'Middle-down', 'Bottom-left', 'Bottom-right'])
         self.update_goalkeeper_position(section)
-        
+
         # Simulate the ball moving
         self.ball_trajectory(x_goal, y_goal)
 
@@ -37,7 +39,7 @@ class SoccerPenaltyEnv(gym.Env):
         reward = 1 if goal_scored else 0
         done = True
         info = {"goalkeeper_section": section, "goolkeeper_position": self.goalkeeper_position}
-        
+
         return np.array(self.player + self.goalkeeper_position + self.ball), reward, done, info
 
     def decide_goalkeeper_dive(self, x_goal):
@@ -91,13 +93,12 @@ class SoccerPenaltyEnv(gym.Env):
         self.ax.add_patch(goal)
 
         # Draw the sections
-        # self.ax.add_patch(patches.Rectangle((100, 500), 300, 500, linewidth=1, edgecolor='r', facecolor='none'))  # Top-left
-        # self.ax.add_patch(patches.Rectangle((400, 500), 300, 500, linewidth=1, edgecolor='r', facecolor='none'))  # Middle-up
-        # self.ax.add_patch(patches.Rectangle((700, 500), 300, 500, linewidth=1, edgecolor='r', facecolor='none'))  # Top-right
-        # self.ax.add_patch(patches.Rectangle((100, 100), 300, 400, linewidth=1, edgecolor='r', facecolor='none'))  # Bottom-left
-        # self.ax.add_patch(patches.Rectangle((400, 100), 300, 400, linewidth=1, edgecolor='r', facecolor='none'))  # Middle-down
-        # self.ax.add_patch(patches.Rectangle((700, 100), 300, 400, linewidth=1, edgecolor='r', facecolor='none'))  # Bottom-right
-    
+        # self.ax.add_patch(patches.Rectangle((100, 500), 300, 500, linewidth=1, edgecolor='r', facecolor='none'))
+        # self.ax.add_patch(patches.Rectangle((400, 500), 300, 500, linewidth=1, edgecolor='r', facecolor='none'))
+        # self.ax.add_patch(patches.Rectangle((700, 500), 300, 500, linewidth=1, edgecolor='r', facecolor='none'))
+        # self.ax.add_patch(patches.Rectangle((100, 100), 300, 400, linewidth=1, edgecolor='r', facecolor='none'))
+        # self.ax.add_patch(patches.Rectangle((400, 100), 300, 400, linewidth=1, edgecolor='r', facecolor='none'))
+
         # Draw the goalkeeper
         goalkeeper = patches.Circle((self.goalkeeper_position[0], self.goalkeeper_position[1]), 80, color='green')
         self.ax.add_patch(goalkeeper)
@@ -130,7 +131,7 @@ def main():
     logging.info("")
     logging.info(f"Episode {i+1}")
     action = env.action_space.sample()  # Take a random action
-    
+
     # Decode the action to understand the direction
     x_goal = action % 1000 + 100  # Calculating the x position where the ball should end up
     y_goal = 1100  # y position at goal line
@@ -156,3 +157,4 @@ def main():
 if __name__ == "__main__":
     setup_logging()
     main()
+"""

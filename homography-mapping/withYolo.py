@@ -21,9 +21,9 @@ def compute_homography(image_points):
     return homography_matrix
 
 
-def apply_homography(H, points):
+def apply_homography(h, points):
     # Transform the points using the homography matrix
-    transformed_points = cv2.perspectiveTransform(np.array([points], dtype="float32"), H)
+    transformed_points = cv2.perspectiveTransform(np.array([points], dtype="float32"), h)
     return transformed_points[0]
 
 

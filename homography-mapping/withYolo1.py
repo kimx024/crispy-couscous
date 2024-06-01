@@ -21,9 +21,9 @@ def compute_homography(image_points):
     return homography_matrix
 
 
-def apply_homography(H, points):
+def apply_homography(h, points):
     # Transform the points using the homography matrix
-    transformed_points = cv2.perspectiveTransform(np.array([points], dtype="float32"), H)
+    transformed_points = cv2.perspectiveTransform(np.array([points], dtype="float32"), h)
     return transformed_points[0]
 
 
@@ -79,8 +79,6 @@ def detect_goal_with_yolo(frame, model):
         (goal_sections["goal-bottom-left"][0], goal_sections["goal-bottom-left"][3])  # Bottom-left
     ]
 
-    return goal_points
-
     if missing_sections:
         print(f"Missing sections: {missing_sections}")
         # Implement simple fallback logic
@@ -93,6 +91,7 @@ def detect_goal_with_yolo(frame, model):
         if "goal-bottom-right" in missing_sections and goal_sections["goal-top-right"]:
             goal_sections["goal-bottom-right"] = (goal_sections["goal-top-right"][0], goal_sections["goal-top-right"][1] + 50)
 
+    return goal_points
 
 def process_frames(folder_path, model):
     # Get a list of all image files in the folder

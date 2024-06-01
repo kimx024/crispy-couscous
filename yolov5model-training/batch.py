@@ -3,7 +3,7 @@ import yolov5
 from PIL import Image
 
 # Load the pretrained model with the custom weights (best.pt)
-model_path = ('/Users/kim.lichtenberg/Desktop/kim-fifa/crispy-couscous/.venv/lib/python3.10/site-packages/yolov5')
+model_path = '/Users/kim.lichtenberg/Desktop/kim-fifa/crispy-couscous/.venv/lib/python3.10/site-packages/yolov5'
 weights_path = '/Users/kim.lichtenberg/Desktop/kim-fifa/crispy-couscous/yolov5model-training/model/finalBest.pt'
 
 model = yolov5.load(weights_path)  # loading the custom weights

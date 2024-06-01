@@ -17,13 +17,15 @@ def click_event(event, x, y, flags, param):
         cv2.imshow('Source Image', im_src)
         # Print the clicked point coordinates
         print(f"Point {len(pts_src)}: ({x}, {y})")
+        print(f"what are {flags}, {param}")
         # If 4 points are clicked, close the window
         if len(pts_src) == 4:
             cv2.destroyAllWindows()
 
 
 # Load the image
-img_path = "/Users/kim.lichtenberg/Desktop/kim-fifa/crispy-couscous/yolov5model-training/dataset/train/images/0005_jpg.rf.7eada4302fb9d9e7e7c8b1c591613eee.jpg"
+img_path = ("/Users/kim.lichtenberg/Desktop/kim-fifa/crispy-couscous/yolov5model-training/dataset/train/images"
+            "/0005_jpg.rf.7eada4302fb9d9e7e7c8b1c591613eee.jpg")
 im_src = cv2.imread(img_path)
 
 if im_src is None:
