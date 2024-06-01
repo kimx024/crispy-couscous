@@ -5,7 +5,7 @@ import torch
 import os
 
 """
-Code adapted from: withYolo2.py
+DON'T EDIT THIS FUCKING FILE ANYMORE IT WORKS??>?>??>
 """
 
 reference_points = np.array([[0, 0], [1, 0], [1, 1], [0, 1]], dtype="float32")
@@ -15,7 +15,7 @@ def read_folder(directory):
     directory_files = [os.path.join(directory, f) for f in os.listdir(directory) if f.endswith(('png', 'jpg', 'jpeg'))]
     directory_files.sort()
     counter = len(directory_files)  # Update counter to reflect the number of files
-    print(f"Folder processing completed with {counter} files")
+    print(f"Folder processing completed: {counter} files are read")
     return directory_files
 
 
@@ -45,18 +45,18 @@ def get_label_information(information_list):
 def establish_goal(information_list, model):
     goal_points = []
     goal_sections = {
-        "goal-top-left": 0,
-        "goal-middle-down": 0,
-        "goal-top-right": 0,
-        "goal-bottom-left": 0,
-        "goal-middle-up": 0,
+        "goal-top-left": None,
+        "goal-middle-down": None,
+        "goal-top-right": None,
+        "goal-bottom-left": None,
+        "goal-middle-up": None,
         "goal-bottom-right": None
     }
 
     for index, frame in enumerate(information_list):
         detection = frame.xyxy[0]
         # Debugging: Print out the detection data for each frame
-        print(f"Frame {index + 1} detections: {detection}")
+        # print(f"Frame {index + 1} detections: {detection}")
 
         # Extract detected goal sections
         for *box, confidence, class_labels in detection:
@@ -83,13 +83,14 @@ def establish_goal(information_list, model):
                 (goal_sections["goal-top-right"][2], goal_sections["goal-top-right"][1]),  # Top-right
             ]
 
-        #     print(f"In frame {index + 1} the corners of the goal are: {goal_points}")
-        # else:
-        #     print(f"In frame {index + 1}, not all goal sections were detected.")
+            # print(f"In frame {index + 1} the corners of the goal are: {goal_points}")
+        else:
+            # print(f"In frame {index + 1}, not all goal sections were detected.")
+            continue
     return goal_points
 
 
-def determine_homography_goal(goal_points) -> np.ndarray:
+def determine_homography_goal(goal_points, ref_points) -> np.ndarray:
     """
     This function determines the homography of the full goal. Can be redundant perhaps when applying goal sections.
     The input of the second variable declaration are the full goal coordinates of the corners of the goal,
@@ -100,7 +101,7 @@ def determine_homography_goal(goal_points) -> np.ndarray:
     :return: homography_goal_coordinates: np.ndarray of shape (3, 2)
     """
     goal_coordinates = np.array(goal_points, dtype="float32")
-    h_goal_coordinates, projection = cv2.findHomography(goal_coordinates, reference_points)
+    h_goal_coordinates, projection = cv2.findHomography(goal_coordinates, ref_points)
     # print(f"Homography: {h_goal_coordinates} has type {type(h_goal_coordinates)}"
     #       f"\n Projection: {projection} has type {type(projection)}")
     return h_goal_coordinates
@@ -112,7 +113,7 @@ def apply_homography_to_image(h_goal_coords, drawn_points):
     return transformation_matrix[0]
 
 
-def process_images(directory, model, reference_points):
+def process_images(directory, model, ref_points):
     # Read all the images from the folder
     directory_files = read_folder(directory)
 
@@ -122,13 +123,8 @@ def process_images(directory, model, reference_points):
     # Establish goal points for each image
     counter = 0
     for filename in directory_files:
-        img = cv2.imread(filename)
+        frame = cv2.imread(filename)
         info = information_list[counter]
-
-        # Debugging: Print the info and type to understand the content
-        print(f"Processing file {filename}, counter: {counter}")
-        print(f"Info type: {type(info)}")
-
         goal_points = establish_goal([info], model)
 
         # Debugging: Print the goal_points to ensure they are correct
@@ -136,7 +132,7 @@ def process_images(directory, model, reference_points):
 
         if len(goal_points) == 4 and all(isinstance(point, (tuple, list)) and len(point) == 2 for point in goal_points):
             # Determine the homography for the goal
-            h_goal_coords = determine_homography_goal(goal_points)
+            h_goal_coords = determine_homography_goal(goal_points, ref_points)
 
             # Map the goal points using the homography matrix
             goal_points_array = np.array(goal_points, dtype="float32")
@@ -145,40 +141,36 @@ def process_images(directory, model, reference_points):
 
             # Draw the detected goal and transformed points on the frame
             for point in goal_points:
-                cv2.circle(img, (int(point[0]), int(point[1])), 5, (0, 255, 0), -1)
+                cv2.circle(frame, (int(point[0]), int(point[1])), 5, (255, 255, 0), -1)
             for point in mapped_points:
-                cv2.circle(img, (int(point[0]), int(point[1])), 5, (255, 0, 0), -1)
+                cv2.circle(frame, (int(point[0]), int(point[1])), 5, (255, 0, 0), -1)
 
             # Display the image with the detected and transformed points
-            cv2.imshow('Transformed Image', img)
+            cv2.imshow('Transformed Image', frame)
             if cv2.waitKey(25) & 0xFF == ord('q'):
                 break
 
         counter += 1
-        print(f"Processing file {filename}, counter: {counter}")
+        print(f"Processing file: {filename}, counter: {counter}")
     cv2.destroyAllWindows()
-
-
-# Assuming reference_points is defined somewhere else in your script
-# reference_points = np.array([...], dtype="float32")
 
 
 if __name__ == "__main__":
     # Define the model path and weights path
     model_path = '/Users/kim.lichtenberg/Desktop/kim-fifa/crispy-couscous/.venv/lib/python3.10/site-packages/yolov5'
-    weights_path = '/Users/kim.lichtenberg/Desktop/kim-fifa/crispy-couscous/yolov5model-training/model/finalBest.pt'
+    weights_path = '/Users/kim.lichtenberg/Desktop/kim-fifa/crispy-couscous/yolov5model-training/model/best.pt'
 
     # Load the custom YOLOv5 model
     load_model = torch.hub.load(model_path, 'custom', path=weights_path, source='local', force_reload=True)
-    # idk why this doesn't get it right
     # Load the files
-    file_path = "/Users/kim.lichtenberg/Desktop/kim-fifa/crispy-couscous/yolov5model-training/dataset/train/images"
+    file_path = "/Users/kim.lichtenberg/Desktop/kim-fifa/crispy-couscous/homography-mapping/footage"
 
     # Functions to execute
-    all_files = read_folder(file_path)
+    # all_files = read_folder(file_path)
     # coordinates = get_coordinates(all_files, load_model)
     # # label_information = get_label_information(coordinates)
     # full_goal = establish_goal(coordinates, load_model)
     # determine_homography_goal(full_goal)
     process_images(file_path, load_model, reference_points)
-    print("Done")
+    print("---------------------")
+    print("Done processing, this code has successfully been executed.")

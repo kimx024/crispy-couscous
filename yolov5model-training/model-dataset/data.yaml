@@ -1,6 +1,6 @@
-train: C:\\Users\fifag\\Documents\\kim-fifa\\crispy-couscous\\yolov5model-training\\model-dataset\\train\\images
-val: C:\\Users\fifag\\Documents\\kim-fifa\\crispy-couscous\\yolov5model-training\\model-dataset\\valid\\images
-test: C:\\Users\fifag\\Documents\\kim-fifa\\crispy-couscous\\yolov5model-training\\model-dataset\\test\\images
+train: /Users/kim.lichtenberg/Desktop/kim-fifa/crispy-couscous/yolov5model-training/model-dataset/train/images
+val: /Users/kim.lichtenberg/Desktop/kim-fifa/crispy-couscous/yolov5model-training/model-dataset/valid/images
+test: /Users/kim.lichtenberg/Desktop/kim-fifa/crispy-couscous/yolov5model-training/model-dataset/test/images
 
 nc: 10
 names: ['circle', 'football', 'goal-bottom-left', 'goal-bottom-right', 'goal-middle-down', 'goal-middle-up', 'goal-top-left', 'goal-top-right', 'goalkeeper', 'player']

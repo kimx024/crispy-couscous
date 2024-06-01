@@ -7,5 +7,6 @@ FC24 project as part of graduating from a Bachelor of Science. Send me a message
 | Current status whole project | 🟠 |
 | Yolov5 implementation in Python | 🟢 |
 | Environment | 🟠| 
+ | Homographical mapping | 🟠 |
 | Learning algorithm | 🔴 |
-| Report paper | 🔴 |
+| Report paper | 🟠 |
