@@ -2,6 +2,10 @@ import cv2
 import numpy as np
 import os
 
+"""
+This one trips
+"""
+
 # Define the reference coordinates of the goal corners
 ref_pts = np.array([
     [0, 0],
@@ -86,5 +90,5 @@ def process_frames(folder_path):
 
 
 # Example usage with a folder path
-folder_path = '/Users/kim.lichtenberg/Desktop/kim-fifa/crispy-couscous/yolov5model-training/dataset/test/images'
+folder_path = '/Users/kim.lichtenberg/Desktop/kim-fifa/crispy-couscous/yolov5model-training/dataset/train/images'
 process_frames(folder_path)
