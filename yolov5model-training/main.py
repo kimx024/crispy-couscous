@@ -35,8 +35,8 @@ model.multi_label = False   # NMS multiple labels per box.
 model.max_det = 1000    # maximum number of detections per image
 
 # set image path (singular image)
-img = ("/Users/kim.lichtenberg/Desktop/kim-fifa/crispy-couscous/yolov5model-training/model-dataset/test/images"
-       "/0007_jpg.rf.5a175221727a95b8d0fb68fc787c13eb.jpg")
+img = ("/Users/kim.lichtenberg/Desktop/kim-fifa/crispy-couscous/yolov5model-training/model-dataset/train/images/"
+       "footage-ingame_mp4-0385_jpg.rf.a2145b6984ec77bfba24d3a121291a70.jpg")
 
 # perform inference with test time augmentation
 # TTA can improve the robustness of the predictions by slightly altering the input data and aggregating the results.

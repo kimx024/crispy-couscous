@@ -6,6 +6,7 @@ import os
 
 """
 DON'T EDIT THIS FUCKING FILE ANYMORE IT WORKS??>?>??>
+Goal-corners
 """
 
 reference_points = np.array([[0, 0], [1, 0], [1, 1], [0, 1]], dtype="float32")
@@ -55,6 +56,7 @@ def establish_goal(information_list, model):
     }
 
     for index, frame in enumerate(information_list):
+        index = 0
         detection = frame.xyxy[0]
         # Debugging: Print out the detection data for each frame
         # print(f"Frame {index + 1} detections: {detection}")
@@ -86,8 +88,7 @@ def establish_goal(information_list, model):
 
             # print(f"In frame {index + 1} the corners of the goal are: {goal_points}")
         else:
-            non_counter += 1
-            # print(f"In frame {index + 1}, not all goal sections were detected.")
+            print(f"Not all goal sections were detected.")
             continue
     return goal_points
 
@@ -150,7 +151,7 @@ def process_images(directory, model, ref_points):
 
             # Display the image with the detected and transformed points
             cv2.imshow('Transformed Image', frame)
-            if cv2.waitKey(25) & 0xFF == ord('q'):
+            if cv2.waitKey(30) & 0xFF == ord('q'):
                 break
 
         counter += 1
