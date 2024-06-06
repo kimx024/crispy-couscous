@@ -121,12 +121,13 @@ def process_images(directory, model, ref_points):
                 cv2.circle(frame, (int(point[0]), int(point[1])), 5, (255, 0, 0), -1)
 
         cv2.imshow('Transformed Image', frame)
-        if cv2.waitKey(30) & 0xFF == ord('q'):
+        if cv2.waitKey(100) & 0xFF == ord('q'):
             break
 
         counter += 1
         print(f"Processing file: {filename}, counter: {counter}")
     cv2.destroyAllWindows()
+
 
 if __name__ == "__main__":
     model_path = '/Users/kim.lichtenberg/Desktop/kim-fifa/crispy-couscous/.venv/lib/python3.10/site-packages/yolov5'
