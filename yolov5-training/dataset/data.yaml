@@ -1,0 +1,13 @@
+train: /Users/kim.lichtenberg/Desktop/kim-fifa/crispy-couscous/yolov5-training/dataset/train/images
+val: /Users/kim.lichtenberg/Desktop/kim-fifa/crispy-couscous/yolov5-training/dataset/valid/images
+test: /Users/kim.lichtenberg/Desktop/kim-fifa/crispy-couscous/yolov5-training/dataset/test/images
+
+nc: 10
+names: ['bottom-left', 'bottom-right', 'center-down', 'center-up', 'circle', 'football', 'goalkeeper', 'player', 'top-left', 'top-right']
+
+roboflow:
+  workspace: fc24-sejel
+  project: penalty-whole-6l2we
+  version: 2
+  license: Private
+  url: https://app.roboflow.com/fc24-sejel/penalty-whole-6l2we/2
