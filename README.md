@@ -7,6 +7,8 @@ FC24 project as part of graduating from a Bachelor of Science. Send me a message
 | Current status whole project | 🟠 |
 | Yolov5 implementation in Python | 🟢 |
 | Environment | 🟠| 
- | Homographical mapping | 🟠 |
+ | Homographical mapping | 🟢 |
 | Learning algorithm | 🔴 |
 | Report paper | 🟠 |
+
+Even though the version of yolo is easily installed with `pip install yolvo5` do clone the repository of yolov5 in this repository directly.
