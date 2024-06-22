@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="762c8a54-7a5a-4b4c-8f8e-3e1aa361ad96" name="Changes" comment="adding in the goal-sections and the ball for object detection.">
-      <change afterPath="$PROJECT_DIR$/gym-environment/2D-new.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gym-environment/2D-start.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gym-environment/carrot0.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gym-environment/2D-environment.py" beforeDir="false" afterPath="$PROJECT_DIR$/gym-environment/2D-environment.py" afterDir="false" />
-    </list>
+    <list default="true" id="762c8a54-7a5a-4b4c-8f8e-3e1aa361ad96" name="Changes" comment="adding in the goal-sections and the ball for object detection." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -230,6 +224,7 @@
       <workItem from="1717405340322" duration="4241000" />
       <workItem from="1717587875500" duration="2956000" />
       <workItem from="1717592690469" duration="5000" />
+      <workItem from="1719058007152" duration="123000" />
     </task>
     <task id="LOCAL-00001" summary="homographic mapping">
       <option name="closed" value="true" />
