@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="762c8a54-7a5a-4b4c-8f8e-3e1aa361ad96" name="Changes" comment="adding in the goal-sections and the ball for object detection." />
+    <list default="true" id="762c8a54-7a5a-4b4c-8f8e-3e1aa361ad96" name="Changes" comment="adding in the goal-sections and the ball for object detection.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gym-environment/2D-environment-logging.py" beforeDir="false" afterPath="$PROJECT_DIR$/gym-environment/old/2D-environment-logging.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gym-environment/2D-environment.py" beforeDir="false" afterPath="$PROJECT_DIR$/gym-environment/old/2D-environment.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gym-environment/2D-new.py" beforeDir="false" afterPath="$PROJECT_DIR$/gym-environment/old/2D-new.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gym-environment/2D-start.py" beforeDir="false" afterPath="$PROJECT_DIR$/gym-environment/old/2D-start.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gym-environment/carrot0.py" beforeDir="false" afterPath="$PROJECT_DIR$/gym-environment/old/carrot0.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gym-environment/cartwheel.py" beforeDir="false" afterPath="$PROJECT_DIR$/gym-environment/example/cartwheel.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -45,37 +53,44 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.2D-environment.executor&quot;: &quot;Run&quot;,
-    &quot;Python.2D-new.executor&quot;: &quot;Run&quot;,
-    &quot;Python.2D-start.executor&quot;: &quot;Run&quot;,
-    &quot;Python.batch.executor&quot;: &quot;Run&quot;,
-    &quot;Python.carrot0.executor&quot;: &quot;Run&quot;,
-    &quot;Python.cartwheel.executor&quot;: &quot;Run&quot;,
-    &quot;Python.lunarlander.executor&quot;: &quot;Run&quot;,
-    &quot;Python.main.executor&quot;: &quot;Run&quot;,
-    &quot;Python.ugh1-DNE.executor&quot;: &quot;Run&quot;,
-    &quot;Python.ugh1-one.executor&quot;: &quot;Run&quot;,
-    &quot;Python.ugh1-zero.executor&quot;: &quot;Run&quot;,
-    &quot;Python.ugh1.executor&quot;: &quot;Run&quot;,
-    &quot;Python.ugh2.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.2D-environment.executor": "Run",
+    "Python.2D-new.executor": "Run",
+    "Python.2D-start.executor": "Run",
+    "Python.batch.executor": "Run",
+    "Python.carrot0.executor": "Run",
+    "Python.cartwheel.executor": "Run",
+    "Python.lunarlander.executor": "Run",
+    "Python.main.executor": "Run",
+    "Python.ugh1-DNE.executor": "Run",
+    "Python.ugh1-one.executor": "Run",
+    "Python.ugh1-zero.executor": "Run",
+    "Python.ugh1.executor": "Run",
+    "Python.ugh2.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/Users/kim.lichtenberg/Desktop/crispy-couscous",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="QodanaReportsService">
     <option name="descriptions">
       <ReportDescription localRun="true" path="/private/var/folders/jc/84vn2js17ns0gh2v23_2sckw0000gp/T/qodana_output/qodana.sarif.json" reportGuid="c1dcd8a1-7d1d-4a51-a437-fd6f3f690a11" reportId="crispy-couscous/qodana/2024-06-02" />
       <ReportDescription localRun="true" path="/private/var/folders/jc/84vn2js17ns0gh2v23_2sckw0000gp/T/qodana_output1/qodana.sarif.json" reportGuid="51893659-1c64-44bc-8010-2f6a52b4a5ba" reportId="crispy-couscous/qodana/2024-06-02" />
     </option>
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/gym-environment/example" />
+      <recent name="$PROJECT_DIR$/gym-environment/old" />
+    </key>
   </component>
   <component name="RunManager" selected="Python.carrot0">
     <configuration name="2D-environment" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
@@ -92,7 +107,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/gym-environment/2D-environment.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/gym-environment/old/2D-environment.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -115,7 +130,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/gym-environment/2D-new.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/gym-environment/old/2D-new.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -138,7 +153,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/gym-environment/2D-start.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/gym-environment/old/2D-start.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -161,7 +176,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/gym-environment/carrot0.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/gym-environment/old/carrot0.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -225,6 +240,7 @@
       <workItem from="1717587875500" duration="2956000" />
       <workItem from="1717592690469" duration="5000" />
       <workItem from="1719058007152" duration="123000" />
+      <workItem from="1719061754296" duration="327000" />
     </task>
     <task id="LOCAL-00001" summary="homographic mapping">
       <option name="closed" value="true" />

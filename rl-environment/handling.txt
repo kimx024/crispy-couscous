@@ -1,0 +1,29 @@
+------- GYMNASIUM ENVIRONMENT
+
+Action space: which actions can the agent take?
+
+>   In this case, the agent is the player and the player can decide to shoot into 6 different areas:
+    [top-left, bottom-left, middle-top, middle-bottom, top-right, bottom-left]
+
+Observation space: what the agent can observe from the environment
+
+------- PYGAME
+`pygame.display.set_mode((screen_size, screen_size))`: Create window of specified size
+`pygame.display.set_caption("Pygame Clock Example")`: Sets the window title.
+`clock = pygame.time.Clock(): Creates a Clock object to manage the frame rate.
+
+
+------- MAPPING OF PIXELS
+Each unit in the observation space corresponds to a certain number of pixels in the Pygame window
+
+
+------- STRUCTURING SOME THOUGHTS
+> Input of this environment: mapping of the goalkeeper from the homographic mapppings from the computer vision model
+< Output of this environment: a reinforcement learning model that can simulate Playstation 5 controller feedback
+
+What now if we would:
+1. take the input of the mappings of the goalkeeper,
+2. transform them to the defined goal sections within this environment,
+3. and translate them to goal sections in wording only?
+
+Then out of the wording (top-left, bottom-right, etc.) we could pick a random position in THIS environment

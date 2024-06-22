@@ -19,7 +19,7 @@ else:
     ])
 
     # Define the destination points (where you want the source points to map to)
-    # For example, we map the points to a rectangular area
+    # For examples, we map the points to a rectangular area
     pts_dst = np.array([
         [0, 0],
         [400, 0],

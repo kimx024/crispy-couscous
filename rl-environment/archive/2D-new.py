@@ -31,7 +31,7 @@ class FootballEnv(gym.Env):
 
         # Define action and observation space
         # Example: action_space = spaces.Discrete(2) for a binary action space
-        self.action_space = spaces.Discrete(4)  # For example, 4 discrete actions
+        self.action_space = spaces.Discrete(4)  # For examples, 4 discrete actions
         self.observation_space = spaces.Box(low=0, high=255, shape=(480, 640, 3), dtype=np.uint8)  # Image shape
 
     def step(self, action):

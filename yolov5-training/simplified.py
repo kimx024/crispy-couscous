@@ -6,7 +6,7 @@ model_path = "/yolov5model-training/best.pt"
 model = YOLOv5(model_path)
 
 # If you have an image to run detection on, load it with an appropriate library
-# For example, using PIL:
+# For examples, using PIL:
 img = Image.open("/yolov5model-training/data0s/test/images/ezgif-frame-142_jpg.rf.b8886e4b4b5085e5c43209a920386563.jpg")
 
 # Perform inference
